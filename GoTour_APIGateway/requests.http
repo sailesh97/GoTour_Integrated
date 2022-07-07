@@ -1,0 +1,106 @@
+### Home
+GET http://localhost:4000 HTTP/1.1
+
+### Sign Up
+POST http://localhost:4000/signUp HTTP/1.1
+Content-Type: application/json
+
+{
+    "customerName": "Sailesh Patraa",
+    "phone": 9853164386,
+    "email" : "saileshpatraa@gmail.com",
+    "address": "Cuttack, Odisha",
+    "aadharNo": "4553-81009-4621",
+    "password": "Sailesh@123"
+}
+
+# {
+#     "customerName": "Sailesh Patra",
+#     "phone": 986565665,
+#     "email" : "sailes@gmail.com",
+#     "address": "Cuttack, Odisha",
+#     "aadharNo": "4553-9009-4621",
+#     "password": "Sailesh@123"
+# }
+
+
+### LogIn
+POST http://localhost:4000/signIn HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"sailesh@gmail.com",
+    "password": "Sailesh@123"
+}
+
+
+########################################  Trip MicroService Requests START ########################################
+### Add a trip
+POST http://localhost:4000/triplist HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+Content-Type: application/json
+
+{
+    "destinationName" : "Kolkata2",
+    "placesToVisit": ["Buttermilk Falls", "Ooty Lake"],
+    "price" : 14000,
+    "daysOfTravel" : 2
+}
+
+### Get all trips
+GET http://localhost:4000/triplist HTTP/1.1
+
+### Delete a trip by ID
+DELETE http://localhost:4000/triplist/62c4085f14c7070f1152e5fe HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+
+########################################  Trip MicroService Requests END ########################################
+
+########################################  Booking MicroService Requests START ########################################
+
+### Server Start
+GET http://localhost:4000/ HTTP/1.1
+
+### Get All Booking
+GET http://localhost:4000/booking HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+
+### Send a Booking Request /booking-POST-protected
+POST http://localhost:4000/booking HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+Content-Type: application/json
+
+{
+    "user": "Sailesh Patra",
+    "bookings": [
+       {
+         "bookingId": 123546,
+         "booking": "booked",
+         "source": "go-tour app",
+         "travel": {"start":"2022-07-24T18:30:00.000Z", "end":"2022-07-27T18:30:00.000Z"},
+         "people": ["2 adults", "1 children"]
+       }
+    ],
+    "payments": [
+        {
+        "invoice_number": 1234487,
+        "payment_method": "credit card",
+        "payment_date": "2022-07-27T18:30:00.000Z",
+        "amount": 1200
+        }
+    ]
+}
+
+### Get all the bookings
+GET http://localhost:4000/booking HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+
+### Get a Booking By ID
+GET http://localhost:4000/booking/62c408b16562b0a580da5a13 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzE5NjQ2M30.x3IfL0DSmsh9yPnM76ZqAFix68KjnrrAVFHVPq191xA
+
+### Delete a booking by ID
+DELETE http://localhost:4000/booking/62c408b16562b0a580da5a13 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2FpbGVzaEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlNhaWxlc2hAMTIzIn0sImlhdCI6MTY1NzAxMzI0OX0.HDqMBTSBViBFmzO76yvYYQYJdYlQ14XiKDXW8YV8VoY
+
+########################################  Booking MicroService Requests START ########################################

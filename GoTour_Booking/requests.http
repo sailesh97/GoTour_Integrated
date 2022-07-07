@@ -1,0 +1,38 @@
+### Server Start
+GET http://localhost:3000/ HTTP/1.1
+
+### Send a Booking Request /booking-POST-protected
+POST http://localhost:3000/booking HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "Sailesh Patra",
+    "bookings": [
+       {
+         "bookingId": 1234,
+         "booking": "booked",
+         "source": "go-tour app",
+         "travel": {"start":"2022-07-24T18:30:00.000Z", "end":"2022-07-27T18:30:00.000Z"},
+         "people": ["2 adults", "1 children"]
+       }
+    ],
+    "payments": [
+        {
+        "invoice_number": 12345,
+        "payment_method": "credit card",
+        "payment_date": "2022-07-27T18:30:00.000Z",
+        "amount": 1200
+        }
+    ]
+}
+
+
+### Get all the bookings
+GET http://localhost:3000/booking HTTP/1.1
+
+
+### Get a Booking By ID
+GET http://localhost:3000/booking/62bece7dba443be7adad76f8 HTTP/1.1
+
+### Delete a booking by ID
+DELETE http://localhost:3000/booking/62bece7dba443be7adad76f8 HTTP/1.1
